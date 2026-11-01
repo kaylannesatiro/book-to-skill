@@ -198,8 +198,16 @@ class TestScannerAndExtractorAgree:
             assert is_invisible_codepoint(codepoint), f"U+{codepoint:04X}"
 
     def test_visible_characters_are_not_flagged(self):
-        for char in "aZ0 \n\t第한กی":
-            assert not is_invisible_codepoint(ord(char)), repr(char)
+        assert not is_invisible_codepoint(ord("a")), repr("a")
+        assert not is_invisible_codepoint(ord("Z")), repr("Z")
+        assert not is_invisible_codepoint(ord("0")), repr("0")
+        assert not is_invisible_codepoint(ord(" ")), repr(" ")
+        assert not is_invisible_codepoint(ord("\n")), repr("\n")
+        assert not is_invisible_codepoint(ord("\t")), repr("\t")
+        assert not is_invisible_codepoint(ord("第")), repr("第")
+        assert not is_invisible_codepoint(ord("한")), repr("한")
+        assert not is_invisible_codepoint(ord("ก")), repr("ก")
+        assert not is_invisible_codepoint(ord("ی")), repr("ی")
 
 
 class TestSmugglingChannelsBeyondTheTagBlock:
